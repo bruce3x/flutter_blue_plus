@@ -175,6 +175,14 @@ typedef NS_ENUM(NSUInteger, LogLevel) {
                 }
                 peripheral = [_scannedPeripherals objectForKey:remoteId];
             }
+
+            if (peripheral == nil)
+            {
+                NSLog(@"findPeripheral --");
+                peripheral = [self findPeripheral:remoteId];
+                NSLog(@"findPeripheral %@", [peripheral.identifier UUIDString]);
+            }
+
             if (peripheral == nil)
             {
                 @throw [FlutterError errorWithCode:@"connect" message:@"Peripheral not found" details:nil];
