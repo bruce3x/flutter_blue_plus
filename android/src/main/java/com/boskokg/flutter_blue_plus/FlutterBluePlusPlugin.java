@@ -892,7 +892,7 @@ public class FlutterBluePlusPlugin implements
                     String deviceId = (String)call.arguments;
                     
                     BluetoothDeviceCache cache = mDevices.get(deviceId);
-                    if(cache != null) {
+                    if(cache == null) {
                         result.error("mtu", "no instance of BluetoothGatt, have you connected first?", null);
                         break;
                     }
