@@ -919,6 +919,10 @@ public class FlutterBluePlusPlugin implements
                     BluetoothGatt gatt = locateGatt(request.getRemoteId());
 
                     int mtu = request.getMtu();
+                    if(gatt.requestMtu(mtu) == false) {
+                        result.error("requestMtu", "gatt.requestMtu returned false", null);
+                        break;
+                    }
 
                     result.success(null);
 
